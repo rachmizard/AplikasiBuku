@@ -8,9 +8,13 @@
                 <div class="panel-body">
 					<form class="form-horizontal" action="<?php echo e(route('storePenjualan.penjualan')); ?>" method="post">
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">ID Buku</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Buku</label>
 					  <div class="col-md-9">
-					  	<input class="form-control" type="text" name="id_buku" placeholder="ID Buku">
+					  	<select name="id_buku" id="">
+					  		<?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $in): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					  		<option value="<?php echo e($in->id); ?>"><?php echo e($in->judul); ?></option>
+					  		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					  	</select>
 					  </div>
 					</div>
 					<div class="form-group">

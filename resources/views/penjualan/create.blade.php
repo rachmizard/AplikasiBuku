@@ -10,9 +10,13 @@
                 <div class="panel-body">
 					<form class="form-horizontal" action="{{ route('storePenjualan.penjualan')}}" method="post">
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">ID Buku</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Buku</label>
 					  <div class="col-md-9">
-					  	<input class="form-control" type="text" name="id_buku" placeholder="ID Buku">
+					  	<select name="id_buku" id="">
+					  		@foreach($buku as $in)
+					  		<option value="{{ $in->id }}">{{ $in->judul }}</option>
+					  		@endforeach
+					  	</select>
 					  </div>
 					</div>
 					<div class="form-group">

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Http\Requests;
 
 use App\Penjualan;
-use Illuminate\Http\Request;
+use App\Buku;
 
 class PenjualanController extends Controller
 {
@@ -25,7 +27,8 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        return view('penjualan.create');
+        $buku = Buku::all();
+        return view('penjualan.create')->with('buku', $buku);
     }
 
     /**
@@ -75,7 +78,8 @@ class PenjualanController extends Controller
     public function edit($id)
     {
         $penjualan = Penjualan::find($id);
-        return view('penjualan.edit')->with('penjualan', $penjualan);
+        $buku = Buku::all();
+        return view('penjualan.edit')->with('penjualan', $penjualan)->with('buku', $buku);
     }
 
     /**

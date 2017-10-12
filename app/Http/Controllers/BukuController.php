@@ -84,8 +84,8 @@ class BukuController extends Controller
     public function show($id)
     {
         //detail
-        $showdetail = buku::findOrfail($id);
-        return view('buku.detail')->with('showdetail', $showdetail);
+        $edit = buku::findOrfail($id);
+        return view('buku.detail')->with('edit', $edit);
     }
 
     /**

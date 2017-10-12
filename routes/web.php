@@ -65,7 +65,7 @@ Route::prefix('home/penjualan')->group(function(){
     Route::get('/detailPenjualan/{id}', 'PenjualanController@store')->name('detailPenjualan.penjualan')->middleware('auth');
     Route::get('/editPenjualan/{id}', 'PenjualanController@edit')->name('edit.show')->middleware('auth');
     Route::post('/updatePenjualan/{id}', 'PenjualanController@update')->name('updatePenjualan.penjualan')->middleware('auth');
-    Route::get('/deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.delete_data');
+    Route::get('/deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.penjualan');
 });
 
 

@@ -14,4 +14,8 @@ class Buku extends Model
       return $this->hasMany('App\Pasok', 'id_buku');
     }
 
+    public function penjualan(){
+      return $this->hasMany('App\Penjualan', 'id_buku');
+    }
+
 }

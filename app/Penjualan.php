@@ -10,4 +10,9 @@ class Penjualan extends Model
     protected $primarykey = 'id';
     protected $fillable = ['id_buku','id_kasir','jumlah','total', 
     'tanggal'];
+
+    public function buku(){
+    	return $this->belongsTo('App\Buku', 'id_buku', 'id');
+    }
+
 }

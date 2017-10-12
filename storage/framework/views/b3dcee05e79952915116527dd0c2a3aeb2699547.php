@@ -70,7 +70,7 @@
                                         <a href="">Kasir</a>
                                     </li>
                                     <li>
-                                        <a href="">Penjualan</a>
+                                        <a href="<?php echo e(route('index.penjualan')); ?>">Penjualan</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo e(route('logout')); ?>"

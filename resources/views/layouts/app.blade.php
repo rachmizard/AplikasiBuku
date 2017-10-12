@@ -70,7 +70,7 @@
                                         <a href="">Kasir</a>
                                     </li>
                                     <li>
-                                        <a href="">Penjualan</a>
+                                        <a href="{{ route('index.penjualan') }}">Penjualan</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

@@ -8,9 +8,13 @@
                 <div class="panel-body">
 					<form class="form-horizontal" action="<?php echo e(route('updatePenjualan.penjualan', $penjualan->id)); ?>" method="POST">
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">Nama	 Buku</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Nama Buku</label>
 					  <div class="col-md-9">
-					  	<input class="form-control" value="<?php echo e($penjualan->id_buku); ?>" type="text" name="id_buku" placeholder="ID Buku">
+					  	<select name="id_buku" id="">
+					  		<?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $in): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					  		<option value="<?php echo e($in->id); ?>" <?php if(($penjualan->id_buku)==($in->id)): ?> selected <?php endif; ?>><?php echo e($in->judul); ?></option>
+					  		<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					  	</select>
 					  </div>
 					</div>
 					<div class="form-group">
@@ -37,8 +41,6 @@
 					  	<input class="form-control" value="<?php echo e($penjualan->tanggal); ?>" type="date" name="tanggal" placeholder="Tanggal">
 					  </div>
 					</div>
-
-					<input type="hidden" name="_method" value="put">
 					<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 					<input class="btn btn-primary col-md-offset-2" type="submit" name="name" value="Edit">
 
