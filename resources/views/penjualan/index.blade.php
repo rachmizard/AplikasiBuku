@@ -16,6 +16,7 @@
 							<th>Kasir</th>
 							<th>Jumlah</th>
 							<th>Total</th>
+							<th>Tanggal</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -25,8 +26,9 @@
 						<td>{{ $penjualan->id_kasir }}</td>
 						<td>{{ $penjualan->jumlah }}</td>
 						<td>{{ $penjualan->total }}</td>
+						<td>{{ $penjualan->tanggal }}</td>
 						<td>
-							<a class="btn btn-primary" href="">Edit</a>
+							<a class="btn btn-primary" href="{{ route('edit.show', $penjualan->id )}}">Edit</a>
 							<a class="btn btn-success" href="">Detail</a>
 							<a class="btn btn-danger" href="">Hapus</a>
 						</td>
@@ -35,7 +37,6 @@
 					@endforeach
 					</table>
 					<center>
-						{!! $penjualans->links() !!}
 					</center>
 				</div>
 			</div>

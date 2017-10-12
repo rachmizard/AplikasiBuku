@@ -59,13 +59,13 @@ Route::prefix('home/distributor')->group(function () {
 
 
 Route::prefix('home/penjualan')->group(function(){
-    Route::get('/', 'PenjualanController@index')->name('index.penjualan');
-    Route::get('addPenjualan', 'PenjualanController@create')->name('addPenjualan.penjualan');
-    Route::post('storePenjualan', 'PenjualanController@store')->name('storePenjualan.penjualan');
-    Route::get('detailPenjualan/{id}', 'PenjualanController@store')->name('detailPenjualan.penjualan');
-    Route::get('editPenjualan/{id}', 'PenjualanController@edit')->name('editPenjualan.penjualan');
-    Route::post('updatePenjualan/{id}', 'PenjualanController@update')->name('updatePenjualan.delete_data');
-    Route::get('deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.delete_data');
+    Route::get('/', 'PenjualanController@index')->name('index.penjualan')->middleware('auth');
+    Route::get('/addPenjualan', 'PenjualanController@create')->name('addPenjualan.penjualan')->middleware('auth');
+    Route::post('/storePenjualan', 'PenjualanController@store')->name('storePenjualan.penjualan')->middleware('auth');
+    Route::get('/detailPenjualan/{id}', 'PenjualanController@store')->name('detailPenjualan.penjualan')->middleware('auth');
+    Route::get('/editPenjualan/{id}', 'PenjualanController@edit')->name('edit.show')->middleware('auth');
+    Route::post('/updatePenjualan/{id}', 'PenjualanController@update')->name('updatePenjualan.penjualan')->middleware('auth');
+    Route::get('/deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.delete_data');
 });
 
 

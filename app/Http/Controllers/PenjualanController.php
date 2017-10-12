@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use App\Penjualan;
 use Illuminate\Http\Request;
 
@@ -15,8 +14,8 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $penjualans = DB::table('penjualan')->paginate(5);
-        return view('penjualan.index', ['penjualans' => $penjualans]);
+        $penjualans = Penjualan::all();
+        return view('penjualan.index', compact('penjualans'));
     }
 
     /**
@@ -103,7 +102,7 @@ class PenjualanController extends Controller
         $penjualan->total = $request->total;
         $penjualan->tanggal = $request->tanggal;
         $penjualan->save();
-        return redirect('penjualan');
+        return redirect('home/penjualan');
     }
 
     /**

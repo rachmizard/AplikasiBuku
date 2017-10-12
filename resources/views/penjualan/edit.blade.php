@@ -1,8 +1,6 @@
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -10,7 +8,7 @@
                 <div class="panel-heading">Edit Data</div>
 
                 <div class="panel-body">
-					<form class="form-horizontal" action="/penjualan/{{$penjualan->id}}" method="post">
+					<form class="form-horizontal" action="{{ route('updatePenjualan.penjualan', $penjualan->id) }}" method="POST">
 					<div class="form-group">
 					<label for="id_penjualan" class="col-md-2 control-label">Nama	 Buku</label>
 					  <div class="col-md-9">
@@ -52,3 +50,4 @@
 			</div>
 		</div>
 	</div>
+@endsection
