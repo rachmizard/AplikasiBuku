@@ -22,7 +22,11 @@
 					<div class="form-group">
 					<label for="id_penjualan" class="col-md-2 control-label">Kasir</label>
 					  <div class="col-md-9">
-						<input class="form-control" type="text" name="id_kasir" placeholder="ID Kasir">
+						<select name="id_kasir" id="">
+							@foreach($kasir as $in)
+							<option value="{{ $in->id }}">{{ $in->nama }}</option>
+							@endforeach
+						</select>
 					  </div>
 					</div>
 					<div class="form-group">

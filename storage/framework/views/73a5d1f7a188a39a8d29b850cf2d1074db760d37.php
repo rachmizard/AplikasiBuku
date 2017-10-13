@@ -21,7 +21,7 @@
 					<?php $__currentLoopData = $penjualans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $penjualan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<tr>
 						<td><?php echo e($penjualan->buku->judul); ?></td>
-						<td><?php echo e($penjualan->id_kasir); ?></td>
+						<td><?php echo e($penjualan->kasir->nama); ?></td>
 						<td><?php echo e($penjualan->jumlah); ?></td>
 						<td><?php echo e($penjualan->total); ?></td>
 						<td><?php echo e($penjualan->tanggal); ?></td>

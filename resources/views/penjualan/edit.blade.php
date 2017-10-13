@@ -20,9 +20,13 @@
 					  </div>
 					</div>
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">ID kasir</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Nama Kasir</label>
 					  <div class="col-md-9">
-						<input class="form-control" value="{{$penjualan->id_kasir}}" type="text" name="id_kasir" placeholder="ID Kasir">
+						<select name="id_kasir" id="">
+					  		@foreach($kasir as $in)
+					  		<option value="{{ $in->id }}" @if(($penjualan->id_kasir)==($in->id)) selected @endif>{{ $in->nama }}</option>
+					  		@endforeach
+					  	</select>
 					  </div>
 					</div>
 					<div class="form-group">

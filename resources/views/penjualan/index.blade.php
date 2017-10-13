@@ -23,7 +23,7 @@
 					@foreach ($penjualans as $penjualan)
 					<tr>
 						<td>{{ $penjualan->buku->judul }}</td>
-						<td>{{ $penjualan->id_kasir }}</td>
+						<td>{{ $penjualan->kasir->nama}}</td>
 						<td>{{ $penjualan->jumlah }}</td>
 						<td>{{ $penjualan->total }}</td>
 						<td>{{ $penjualan->tanggal }}</td>

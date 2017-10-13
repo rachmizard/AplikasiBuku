@@ -41,13 +41,13 @@
 					  </div>
 					</div>
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">Status</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Password</label>
 					  <div class="col-md-9">
 					  	<input class="form-control" type="text" name="password" placeholder="Password kasir">
 					  </div>
 					</div>
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">Tanggal</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Akses</label>
 					  <div class="col-md-9">
 					  	<select name="akses" id="">
 					  		<option value="" selected="">--Pilih Akses--</option>

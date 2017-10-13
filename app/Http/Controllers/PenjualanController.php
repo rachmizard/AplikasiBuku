@@ -6,6 +6,7 @@ use App\Http\Requests;
 
 use App\Penjualan;
 use App\Buku;
+use App\Kasir;
 
 class PenjualanController extends Controller
 {
@@ -28,7 +29,8 @@ class PenjualanController extends Controller
     public function create()
     {
         $buku = Buku::all();
-        return view('penjualan.create')->with('buku', $buku);
+        $kasir = Kasir::all();
+        return view('penjualan.create')->with('buku', $buku)->with('kasir', $kasir);
     }
 
     /**
@@ -79,7 +81,8 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::find($id);
         $buku = Buku::all();
-        return view('penjualan.edit')->with('penjualan', $penjualan)->with('buku', $buku);
+        $kasir = Kasir::all();
+        return view('penjualan.edit')->with('penjualan', $penjualan)->with('buku', $buku)->with('kasir', $kasir);
     }
 
     /**

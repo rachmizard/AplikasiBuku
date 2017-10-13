@@ -18,9 +18,13 @@
 					  </div>
 					</div>
 					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">ID kasir</label>
+					<label for="id_penjualan" class="col-md-2 control-label">Kasir</label>
 					  <div class="col-md-9">
-						<input class="form-control" type="text" name="id_kasir" placeholder="ID Kasir">
+						<select name="id_kasir" id="">
+							<?php $__currentLoopData = $kasir; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $in): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<option value="<?php echo e($in->id); ?>"><?php echo e($in->nama); ?></option>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+						</select>
 					  </div>
 					</div>
 					<div class="form-group">
