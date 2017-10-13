@@ -68,6 +68,17 @@ Route::prefix('home/penjualan')->group(function(){
     Route::get('/deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.penjualan');
 });
 
+Route::prefix('home/kasir')->group(function(){
+    Route::get('/', 'KasirController@index')->name('index.kasir')->middleware('auth');
+    Route::get('/addKasir', 'KasirController@create')->name('addKasir.kasir')->middleware('auth');
+    Route::post('/storeKasir', 'KasirController@store')->name('storeKasir.kasir')->middleware('auth');
+    Route::get('/detailKasir/{id}', 'KasirController@store')->name('detailKasir.kasir')->middleware('auth');
+    Route::get('/editKasir/{id}', 'KasirController@edit')->name('editKasir.kasir')->middleware('auth');
+    Route::post('/updateKasir/{id}', 'KasirController@update')->name('updateKasir.kasir')->middleware('auth');
+    Route::get('/deleteKasir/{id}', 'KasirController@delete')->name('deleteKasir.kasir');
+    Route::get('/searchkasir', 'KasirController@index')->name('searchkasir')->middleware('auth');
+});
+
 
 Route::prefix('home')->group(function () {
     Route::get('/profile', 'UserController@index')->name('user.profile')->middleware('auth');
