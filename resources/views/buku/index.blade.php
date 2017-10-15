@@ -34,7 +34,11 @@
 								<td>{{ (($buku->currentPage() -1) * $buku->perPage() ) + $loop->iteration }}</td>
 								<td>{{ $data->judul }}</td>
 								<td>{{ $data->noisbn }}</td>
+								@if($data->stok == 0 || $data->stok < 0)
+								<td style="text-align: center;">Stok habis</td>
+								@else
 								<td>{{ $data->stok }}</td>
+								@endif
 								<td class=""><a class="btn btn-warning btn-sm" href="{{ route('detail.buku', $data->id) }}"><span class="glyphicon glyphicon-folder-open"></span> Detail</a> <a class="btn btn-danger btn-sm" href="{{ route('delete.buku', $data->id)}}"><span class="glyphicon glyphicon-remove"></span> Hapus</a></td>	
 							</tr>
 							@endforeach
@@ -43,6 +47,7 @@
 								<td style="text-align: center;" colspan="5">Tidak di temukan hasil tersebut</td>
 							</tr>
 							@endif
+
 						</table>
 						<div class="text-center">{{$buku->render()}}</div>
 					</div>	                	

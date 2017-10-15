@@ -89,6 +89,28 @@
 
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Kasir</div>
+                    <div class="panel-body">
+                        <?php if(session('status')): ?>
+                            <div class="alert alert-success">
+                                <?php echo e(session('status')); ?>
+
+                            </div>
+                        <?php endif; ?>
+                        <div class="card text-center">
+                          <div class="card-body">
+                            <h4 class="card-title">Kasir </h4>
+                            <p class="card-text"></p>
+                                <a class="btn btn-default btn-sm" href="<?php echo e(route('index.kasir')); ?>"><span class="glyphicon glyphicon-book"></span> Lihat kasir</a>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- BAGIAN RIDWAN -->
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

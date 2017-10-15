@@ -32,7 +32,11 @@
 								<td><?php echo e((($buku->currentPage() -1) * $buku->perPage() ) + $loop->iteration); ?></td>
 								<td><?php echo e($data->judul); ?></td>
 								<td><?php echo e($data->noisbn); ?></td>
+								<?php if($data->stok == 0 || $data->stok < 0): ?>
+								<td style="text-align: center;">Stok habis</td>
+								<?php else: ?>
 								<td><?php echo e($data->stok); ?></td>
+								<?php endif; ?>
 								<td class=""><a class="btn btn-warning btn-sm" href="<?php echo e(route('detail.buku', $data->id)); ?>"><span class="glyphicon glyphicon-folder-open"></span> Detail</a> <a class="btn btn-danger btn-sm" href="<?php echo e(route('delete.buku', $data->id)); ?>"><span class="glyphicon glyphicon-remove"></span> Hapus</a></td>	
 							</tr>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -41,6 +45,7 @@
 								<td style="text-align: center;" colspan="5">Tidak di temukan hasil tersebut</td>
 							</tr>
 							<?php endif; ?>
+
 						</table>
 						<div class="text-center"><?php echo e($buku->render()); ?></div>
 					</div>	                	

@@ -84,7 +84,7 @@ class BukuController extends Controller
     public function show($id)
     {
         //detail
-        $edit = buku::findOrfail($id);
+        $edit = Buku::findOrfail($id);
         return view('buku.detail')->with('edit', $edit);
     }
 
@@ -97,7 +97,7 @@ class BukuController extends Controller
     public function edit($id)
     {
         //edit 
-        $edit = buku::where('id', $id)->first();
+        $edit = Buku::where('id', $id)->first();
         return view('buku.edit')->with('edit', $edit);
     }
 
@@ -124,8 +124,8 @@ class BukuController extends Controller
         $update->diskon = $request['diskon'];
         $update->update();
 
-        $showdetail = buku::findOrfail($id);
-        return view('buku.detail')->with('showdetail', $showdetail);
+    
+        return redirect('home/buku');
     }
 
     /**

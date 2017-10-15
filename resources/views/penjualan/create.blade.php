@@ -5,9 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Tambah Data</div>
+                <div class="panel-heading">Tambah Penjualan</div>
 
                 <div class="panel-body">
+                	<h4>{{ Session::get('message') }}</h4>
 					<form class="form-horizontal" action="{{ route('storePenjualan.penjualan')}}" method="post">
 					<div class="form-group">
 					<label for="id_penjualan" class="col-md-2 control-label">Buku</label>
@@ -15,6 +16,11 @@
 					  	<select name="id_buku" id="">
 					  		@foreach($buku as $in)
 					  		<option value="{{ $in->id }}">{{ $in->judul }}</option>
+					  		@endforeach
+					  		@foreach($buku as $in)
+							<input type="hidden" name="harga" value="{{ $in->harga_jual }}">
+					  		<input type="hidden" name="ppn" value="{{ $in->ppn }}">
+					  		<input type="hidden" name="diskon" value="{{ $in->diskon }}">
 					  		@endforeach
 					  	</select>
 					  </div>
@@ -35,18 +41,7 @@
 					  	<input class="form-control" type="text" name="jumlah" placeholder="Jumlah">
 					  </div>
 					</div>
-					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">Total</label>
-					  <div class="col-md-9">
-						<input class="form-control" type="text" name="total" placeholder="Total">
-					  </div>
-					</div>
-					<div class="form-group">
-					<label for="id_penjualan" class="col-md-2 control-label">Tanggal</label>
-					  <div class="col-md-9">
-					  	<input class="form-control" type="date" name="tanggal" placeholder="Tanggal">
-					  </div>
-					</div>
+					  	<input class="form-control" type="hidden" value="{{ date('D-m-y H:i:s') }}" name="tanggal" placeholder="Tanggal">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input class="btn btn-primary col-md-offset-2" type="submit" name="name" value="Submit">
 

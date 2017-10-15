@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Penjualan;
 use App\Buku;
 use App\Kasir;
+use Carbon\Carbon;
 
 class PenjualanController extends Controller
 {
@@ -45,18 +46,43 @@ class PenjualanController extends Controller
         'id_buku' => 'required',
         'id_kasir' => 'required',
         'jumlah' => 'required',
-        'total' => 'required',
         'tanggal' => 'required',
     ]);
-        $penjualan = new Penjualan;
 
+        $jumlah = $request['jumlah'];
+        $harga = $request['harga'];
+        $ppn = $request['ppn'];
+        $diskon = $request['diskon'];
+
+        $total = $harga * $jumlah;
+        $total_ppn = $total * $ppn / 100;
+        $total_diskon = $total * $diskon / 100;
+        $total_semua = $total + $total_ppn + $total_diskon;
+
+        $jumlah = $request['jumlah'];
+        $tambah_buku = Buku::where('id', '=', $request['id_buku'])->first();
+
+        if ($tambah_buku->stok == 0 || $tambah_buku->stok < 0) {
+
+            $tambah_buku->stok = $jumlah;
+            return redirect('home/penjualan/addPenjualan')->with('message', 'Stok pada buku tersebut habis!');
+        }else{
+
+        $penjualan = new Penjualan;
         $penjualan->id_buku = $request->id_buku;
         $penjualan->id_kasir = $request->id_kasir;
         $penjualan->jumlah = $request->jumlah;
-        $penjualan->total = $request->total;
+        $penjualan->total = $total_semua;
         $penjualan->tanggal = $request->tanggal;
         $penjualan->save();
-        return redirect('home/penjualan');
+
+        $tambah_buku->stok -= $jumlah;
+        $tambah_buku->update();
+
+            return redirect('home/penjualan')->with('message','Berhasil di tambahkan ke report kasir!');
+        }
+
+
     }
 
     /**
@@ -107,9 +133,11 @@ class PenjualanController extends Controller
         $penjualan->id_kasir = $request->id_kasir;
         $penjualan->jumlah = $request->jumlah;
         $penjualan->total = $request->total;
-        $penjualan->tanggal = $request->tanggal;
+        $penjualan->tanggal = Carbon::now();
         $penjualan->save();
         return redirect('home/penjualan');
+
+
     }
 
     /**
@@ -122,6 +150,14 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::find($id);
         $penjualan->delete();
-        return redirect('penjualan');
+        return redirect('home/penjualan');
     }
+
+    public function destroyAll(){
+        $delete_kabeh = Penjualan::truncate();
+        $delete_kabeh->delete();
+        return redirect('home/penjualan')->with('messagedelete','Semua report kasir telah dihapus!');
+    }
+
+
 }

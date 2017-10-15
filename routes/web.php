@@ -65,7 +65,8 @@ Route::prefix('home/penjualan')->group(function(){
     Route::get('/detailPenjualan/{id}', 'PenjualanController@store')->name('detailPenjualan.penjualan')->middleware('auth');
     Route::get('/editPenjualan/{id}', 'PenjualanController@edit')->name('edit.show')->middleware('auth');
     Route::post('/updatePenjualan/{id}', 'PenjualanController@update')->name('updatePenjualan.penjualan')->middleware('auth');
-    Route::get('/deletePenjualan/{id}', 'PenjualanController@delete')->name('deletePenjualan.penjualan');
+    Route::get('/deletePenjualan/{id}', 'PenjualanController@destroy')->name('deletePenjualan.penjualan')->middleware('auth');
+    Route::get('/deleteTbPenjualan', 'PenjualanController@destroyAll')->name('deleteTbPenjualan.penjualan');
 });
 
 Route::prefix('home/kasir')->group(function(){
