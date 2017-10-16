@@ -9,11 +9,23 @@
                 @if(session()->has('message'))
 				    <div class="alert alert-success">
 				        {{ session()->get('message') }}
+				        @if(session()->get('namabuku'))
+				        <b>{{ session()->get('namabuku') }}</b>
+				        @endif
+				        adalah
+				        @if(session()->get('stokbuku'))
+				        <b>{{ session()->get('stokbuku') }}</b>
+				        @endif
 				    </div>
 				@endif
                 @if(session()->has('messagedelete'))
 				    <div class="alert alert-danger">
 				        {{ session()->get('messagedelete') }}
+				    </div>
+				@endif
+                @if(session()->has('hapussatu'))
+				    <div class="alert alert-danger">
+				        {{ session()->get('hapussatu') }}
 				    </div>
 				@endif
                 <div class="panel-body">

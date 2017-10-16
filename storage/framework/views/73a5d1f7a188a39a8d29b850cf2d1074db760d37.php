@@ -8,11 +8,24 @@
 				    <div class="alert alert-success">
 				        <?php echo e(session()->get('message')); ?>
 
+				        <?php if(session()->get('namabuku')): ?>
+				        <b><?php echo e(session()->get('namabuku')); ?></b>
+				        <?php endif; ?>
+				        adalah
+				        <?php if(session()->get('stokbuku')): ?>
+				        <b><?php echo e(session()->get('stokbuku')); ?></b>
+				        <?php endif; ?>
 				    </div>
 				<?php endif; ?>
                 <?php if(session()->has('messagedelete')): ?>
 				    <div class="alert alert-danger">
 				        <?php echo e(session()->get('messagedelete')); ?>
+
+				    </div>
+				<?php endif; ?>
+                <?php if(session()->has('hapussatu')): ?>
+				    <div class="alert alert-danger">
+				        <?php echo e(session()->get('hapussatu')); ?>
 
 				    </div>
 				<?php endif; ?>

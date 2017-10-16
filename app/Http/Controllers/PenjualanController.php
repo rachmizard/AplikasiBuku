@@ -65,7 +65,7 @@ class PenjualanController extends Controller
         if ($tambah_buku->stok == 0 || $tambah_buku->stok < 0) {
 
             $tambah_buku->stok = $jumlah;
-            return redirect('home/penjualan/addPenjualan')->with('message', 'Stok pada buku tersebut habis!');
+            return redirect('home/penjualan/addPenjualan')->with('message', 'Stok pada buku tersebut habis, mohon tunggu stok datang lagi!');
         }else{
 
         $penjualan = new Penjualan;
@@ -79,7 +79,7 @@ class PenjualanController extends Controller
         $tambah_buku->stok -= $jumlah;
         $tambah_buku->update();
 
-            return redirect('home/penjualan')->with('message','Berhasil di tambahkan ke report kasir!');
+            return redirect('home/penjualan')->with('message', 'Berhasil di tambahkan, sisa stok buku')->with('stokbuku', $tambah_buku->stok)->with('namabuku', $tambah_buku->judul);
         }
 
 
@@ -150,7 +150,7 @@ class PenjualanController extends Controller
     {
         $penjualan = Penjualan::find($id);
         $penjualan->delete();
-        return redirect('home/penjualan');
+        return redirect('home/penjualan')->with('hapussatu','Data tersebut berhasil di hapus');
     }
 
     public function destroyAll(){

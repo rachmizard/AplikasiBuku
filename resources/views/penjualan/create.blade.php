@@ -8,7 +8,11 @@
                 <div class="panel-heading">Tambah Penjualan</div>
 
                 <div class="panel-body">
-                	<h4>{{ Session::get('message') }}</h4>
+                @if(session()->has('message'))
+				    <div class="alert alert-danger">
+				        {{ session()->get('message') }}
+				    </div>
+				@endif
 					<form class="form-horizontal" action="{{ route('storePenjualan.penjualan')}}" method="post">
 					<div class="form-group">
 					<label for="id_penjualan" class="col-md-2 control-label">Buku</label>

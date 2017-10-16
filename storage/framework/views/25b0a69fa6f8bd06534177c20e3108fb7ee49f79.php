@@ -6,7 +6,12 @@
                 <div class="panel-heading">Tambah Penjualan</div>
 
                 <div class="panel-body">
-                	<h4><?php echo e(Session::get('message')); ?></h4>
+                <?php if(session()->has('message')): ?>
+				    <div class="alert alert-danger">
+				        <?php echo e(session()->get('message')); ?>
+
+				    </div>
+				<?php endif; ?>
 					<form class="form-horizontal" action="<?php echo e(route('storePenjualan.penjualan')); ?>" method="post">
 					<div class="form-group">
 					<label for="id_penjualan" class="col-md-2 control-label">Buku</label>

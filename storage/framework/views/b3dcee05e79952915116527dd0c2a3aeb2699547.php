@@ -51,7 +51,6 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <?php echo e(Auth::user()->firstname); ?> <span class="caret"></span>
                                 </a>
-
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="<?php echo e(route('user.profile')); ?>"><span style="margin-right:3px;" class="glyphicon glyphicon-user"></span> Profile</a>
@@ -66,7 +65,7 @@
                                         <a href="<?php echo e(route('index.buku')); ?>">Buku</a>
                                     </li>
                                     <li>
-                                        <a href="">Kasir</a>
+                                        <a href="<?php echo e(route('index.kasir')); ?>">Kasir</a>
                                     </li>
                                     <li>
                                         <a href="<?php echo e(route('index.penjualan')); ?>">Penjualan</a>
